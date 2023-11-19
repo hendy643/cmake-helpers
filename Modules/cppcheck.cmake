@@ -1,6 +1,9 @@
 include_guard(GLOBAL)
 
-find_program(CPPCHECK "C:\\Program Files\\Cppcheck\\cppcheck.exe")
+find_program(CPPCHECK 
+    "C:\\Program Files\\Cppcheck\\cppcheck.exe"
+    "~/scoop/shims/cppcheck.exe"
+)
 if(CMAKE_BUILD_TYPE MATCHES "Release")
 if(CPPCHECK)
   message("-- cppcheck enabled: ${CPPCHECK}")
