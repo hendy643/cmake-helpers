@@ -1,8 +1,8 @@
 include_guard(GLOBAL)
 
 find_program(CPPCHECK 
-    "C:\\Program Files\\Cppcheck\\cppcheck.exe"
-    "~/scoop/shims/cppcheck.exe"
+    NAMES "cppcheck" "cppcheck.exe"
+    PATHS "C:\\Program Files\\Cppcheck" "$ENV{USERPROFILE}/scoop/shims" "/usr/bin" "/usr/local/bin"
 )
 if(CMAKE_BUILD_TYPE MATCHES "Release")
 if(CPPCHECK)
