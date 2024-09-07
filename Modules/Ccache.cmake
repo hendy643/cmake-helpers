@@ -1,0 +1,13 @@
+include_guard(GLOBAL)
+
+find_program(SCCACHE_FOUND sccache)
+if(SCCACHE_FOUND)
+    set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE sccache)
+    message(STATUS "sccache found and enabled")
+else()
+    find_program(CCACHE_FOUND ccache)
+    if(CCACHE_FOUND)
+        set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
+        message(STATUS "ccache found and enabled")
+    endif()
+endif()
