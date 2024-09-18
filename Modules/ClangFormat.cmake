@@ -8,7 +8,10 @@ set(CLANG_FORMAT_POSTFIX "-15")
 find_program(
   CLANG_FORMAT
   NAMES clang-format${CLANG_FORMAT_POSTFIX} clang-format
-  PATHS ${PROJECT_BINARY_DIR}/externals /usr/local/opt/llvm/bin # macos
+  PATHS
+        ${PROJECT_BINARY_DIR}/externals
+        /usr/local/opt/llvm/bin # macos
+        "$ENV{USERPROFILE}/scoop/apps/llvm/current/bin" # windows
 )
 # if find_program doesn't find it, try to download from externals
 if (NOT CLANG_FORMAT)
