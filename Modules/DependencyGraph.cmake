@@ -1,0 +1,12 @@
+include_guard(GLOBAL)
+
+function(gen_dep_graph)
+  find_program(GRAPHVIZ dot)
+  if(GRAPHVIZ)
+    file(MAKE_DIRECTORY <DIST_DIR>/graph)
+    add_custom_target(graphviz COMMENT "Create project targets graph image, located at: <DIST_DIR>/graph/<TARGET_NAME>.svg" WORKING_DIRECTORY "${CMAKE_BINARY_DIR}" COMMAND ${CMAKE_COMMAND} "--graphviz=graphviz/<TARGET_NAME>.dot COMMAND dot -Tsvg graphviz/<TARGET_NAME>.dot -o graphviz/<TARGET_NAME>.svg")
+  endif()
+  if(GRAPHVIZ)
+    add_dependencies(<TARGET_NAME> graphviz)
+  endif()
+endfunction()
